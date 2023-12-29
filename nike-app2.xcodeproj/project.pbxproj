@@ -13,6 +13,9 @@
 		4BA971582B3EBA0B00A39749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA971572B3EBA0B00A39749 /* Assets.xcassets */; };
 		4BA9715B2B3EBA0B00A39749 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9715A2B3EBA0B00A39749 /* Preview Assets.xcassets */; };
 		4BA9715E2B3EBA0B00A39749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9715C2B3EBA0B00A39749 /* LaunchScreen.storyboard */; };
+		4BA971662B3EC3D000A39749 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA971652B3EC3D000A39749 /* ProductCard.swift */; };
+		4BA9716A2B3ECA5E00A39749 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA971692B3ECA5D00A39749 /* ProductCollectionViewCell.swift */; };
+		4BA9716C2B3ECE7800A39749 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9716B2B3ECE7800A39749 /* ProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		4BA9715A2B3EBA0B00A39749 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4BA9715D2B3EBA0B00A39749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BA9715F2B3EBA0B00A39749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BA971652B3EC3D000A39749 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
+		4BA971692B3ECA5D00A39749 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		4BA9716B2B3ECE7800A39749 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				4BA9715C2B3EBA0B00A39749 /* LaunchScreen.storyboard */,
 				4BA9715F2B3EBA0B00A39749 /* Info.plist */,
 				4BA971592B3EBA0B00A39749 /* Preview Content */,
+				4BA971652B3EC3D000A39749 /* ProductCard.swift */,
+				4BA971692B3ECA5D00A39749 /* ProductCollectionViewCell.swift */,
+				4BA9716B2B3ECE7800A39749 /* ProductViewController.swift */,
 			);
 			path = "nike-app2";
 			sourceTree = "<group>";
@@ -146,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA9716C2B3ECE7800A39749 /* ProductViewController.swift in Sources */,
 				4BA971522B3EBA0800A39749 /* AppDelegate.swift in Sources */,
 				4BA971542B3EBA0800A39749 /* SceneDelegate.swift in Sources */,
 				4BA971562B3EBA0800A39749 /* ContentView.swift in Sources */,
+				4BA9716A2B3ECA5E00A39749 /* ProductCollectionViewCell.swift in Sources */,
+				4BA971662B3EC3D000A39749 /* ProductCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
