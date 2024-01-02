@@ -15,13 +15,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     var host: UIHostingController<ProductCard>?
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
-        fatalError(" not implemented")
+        fatalError("not implemented")
     }
       
     func embded(in parent:UIViewController, withContent content: ProductContent){
@@ -34,7 +33,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
              
             parent.addChild(host)
             host.didMove(toParent:parent)
-            
             
             host.view.frame = self.contentView.bounds
             self.contentView.addSubview(host.view)

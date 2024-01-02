@@ -8,8 +8,11 @@
 
 import SwiftUI
 
-protocol ProductContent {
-    var mainImageName: String {get}
+struct ProductContent {
+    var imageName: String
+    init(imageName: String){
+        self.imageName = imageName
+    }
 }
 
 struct ProductCard: View {
@@ -17,11 +20,16 @@ struct ProductCard: View {
     let content: ProductContent
     var body: some View {
         VStack (alignment: .leading, spacing: 2 ){
-            Image(content.mainImageName)
-            .resizable()
-                .frame(width: 170, height:170, alignment: .bottom)
             
+            Image(content.imageName)
+               // .foregroundColor(color: .green)
+            .resizable()
+                .padding(.horizontal, 20)
+            .scaledToFit()
+        
+                //.foregroundColor(.green)
         }
+        .background(Color.green)
     }
 }
 
