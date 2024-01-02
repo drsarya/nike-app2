@@ -21,13 +21,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let contentView = ProductViewController()
-
+        contentView.productName = "Sneakers g45"
+        contentView.items = [
+            ProductViewController.Item(mainImageName: ProductContent(imageName: "p1_0"),
+                 nestedImagesNames: [ProductContent(imageName:"p1_1"),                                 ProductContent(imageName:"p1_2"), ProductContent(imageName:"p1_3")], title: "Product 1" ),
+            ProductViewController.Item(mainImageName: ProductContent(imageName:"p2_0"), nestedImagesNames: [ProductContent(imageName:"p2_1"), ProductContent(imageName:"p2_2"), ProductContent(imageName:"p2_3")], title: "Product 2" )
+            
+        ]
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = contentView
-            //window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
+            let navController = UINavigationController(rootViewController: contentView)
+            window.rootViewController = navController
             window.makeKeyAndVisible()
         }
     }

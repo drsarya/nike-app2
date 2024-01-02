@@ -20,16 +20,11 @@ struct ProductCard: View {
     let content: ProductContent
     var body: some View {
         VStack (alignment: .leading, spacing: 2 ){
-            
             Image(content.imageName)
-               // .foregroundColor(color: .green)
             .resizable()
-                .padding(.horizontal, 20)
+            .padding(.horizontal, 20)
             .scaledToFit()
-        
-                //.foregroundColor(.green)
         }
-        .background(Color.green)
     }
 }
 

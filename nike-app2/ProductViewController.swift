@@ -11,18 +11,14 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ProductViewController: UIViewController {
-    
-    lazy var navigationView: UINavigationBar = {
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y:0, width: view.frame.size.width, height:44))
-        let navItem = UINavigationItem(title: "HII")
-        let backItem = UIBarButtonItem()
-        backItem.title = "BACK"
-        navItem.backBarButtonItem = backItem
-        navBar.setItems([navItem], animated:false)
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        //navBar.translatesAutoresizingMaskIntoConstraints = false
-        return navBar
-    }()
+    var productName: String = ""
+    var selectedProduct: Item?
+    var items: [Item] = []
+    struct Item {
+        var mainImageName: ProductContent
+        var nestedImagesNames: [ProductContent]
+        var title: String
+    }
     
     lazy var allProductImagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,6 +27,7 @@ class ProductViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -42,11 +39,11 @@ class ProductViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+
         let tap = UITapGestureRecognizer( target: self, action: #selector(didSelectProductType(_:) ))
         collectionView.addGestureRecognizer(tap)
     
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -70,22 +67,17 @@ class ProductViewController: UIViewController {
         if(items.count > 0){
             self.selectedProduct = items[0]
         }
-        view.backgroundColor = .lightGray
-        view.addSubview(navigationView)
+        view.backgroundColor = .white
+        navigationItem.title = self.productName
+
         view.addSubview(allProductImagesCollectionView)
         view.addSubview(productTypesCollectionView)
         
         NSLayoutConstraint.activate([
-            
-            //navigationView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-           // navigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 16),
-           // navigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            navigationView.heightAnchor.constraint(equalToConstant: 50),
-            
             allProductImagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             allProductImagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 16),
             allProductImagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            allProductImagesCollectionView.heightAnchor.constraint(equalToConstant: 350),
+            allProductImagesCollectionView.heightAnchor.constraint(equalToConstant: 550),
             
             productTypesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 16),
             productTypesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 16),
@@ -93,21 +85,6 @@ class ProductViewController: UIViewController {
             productTypesCollectionView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
-    
-    struct Item {
-        var mainImageName: ProductContent
-        var nestedImagesNames: [ProductContent]
-        var title: String
-    }
-    
-    let items: [Item] = [
-        Item(mainImageName: ProductContent(imageName: "p1_0"),
-             nestedImagesNames: [ProductContent(imageName:"p1_1"),                                 ProductContent(imageName:"p1_2"), ProductContent(imageName:"p1_3")], title: "Product 1" ),
-        Item(mainImageName: ProductContent(imageName:"p2_0"), nestedImagesNames: [ProductContent(imageName:"p2_1"), ProductContent(imageName:"p2_2"), ProductContent(imageName:"p2_3")], title: "Product 2" )
-        
-    ]
-    
-    var selectedProduct: Item?
 }
 
 extension ProductViewController: UICollectionViewDataSource{
@@ -130,15 +107,10 @@ extension ProductViewController: UICollectionViewDataSource{
             let item = self.selectedProduct!.nestedImagesNames[indexPath.row]
             cell.embded(in: self, withContent: item)
             return cell
-            
         }
-        
         
         let item = items[indexPath.row]
         cell.embded(in: self, withContent: item.mainImageName)
-        cell.backgroundColor = .systemPink
-        cell.contentView.backgroundColor = .systemBlue
-        cell.alpha = 0.5
         return cell
     }
 }
@@ -146,7 +118,7 @@ extension ProductViewController: UICollectionViewDataSource{
 extension ProductViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  sizeForItemAt indexPath: IndexPath) -> CGSize{
         if(collectionView == self.allProductImagesCollectionView){
-            return CGSize(width: 300, height:300)
+            return CGSize(width: 392, height:460)
         }
         return CGSize(width: 170, height:170)
     }
