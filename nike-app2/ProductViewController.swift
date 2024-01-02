@@ -75,13 +75,13 @@ class ProductViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             allProductImagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            allProductImagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 16),
-            allProductImagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            allProductImagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 0),
+            allProductImagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             allProductImagesCollectionView.heightAnchor.constraint(equalToConstant: 550),
             
             productTypesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 16),
-            productTypesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 16),
-            productTypesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            productTypesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 0),
+            productTypesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             productTypesCollectionView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
