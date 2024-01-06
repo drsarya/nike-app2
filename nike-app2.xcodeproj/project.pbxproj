@@ -16,6 +16,8 @@
 		4BA971662B3EC3D000A39749 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA971652B3EC3D000A39749 /* ProductCard.swift */; };
 		4BA9716A2B3ECA5E00A39749 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA971692B3ECA5D00A39749 /* ProductCollectionViewCell.swift */; };
 		4BA9716C2B3ECE7800A39749 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9716B2B3ECE7800A39749 /* ProductViewController.swift */; };
+		4BE3BBD42B49E2BF001D503F /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE3BBD32B49E2BF001D503F /* ApiService.swift */; };
+		4BE3BBD62B49F2C9001D503F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE3BBD52B49F2C9001D503F /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		4BA971652B3EC3D000A39749 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
 		4BA971692B3ECA5D00A39749 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BA9716B2B3ECE7800A39749 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		4BE3BBD32B49E2BF001D503F /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		4BE3BBD52B49F2C9001D503F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				4BA971652B3EC3D000A39749 /* ProductCard.swift */,
 				4BA971692B3ECA5D00A39749 /* ProductCollectionViewCell.swift */,
 				4BA9716B2B3ECE7800A39749 /* ProductViewController.swift */,
+				4BE3BBD32B49E2BF001D503F /* ApiService.swift */,
+				4BE3BBD52B49F2C9001D503F /* ImageLoader.swift */,
 			);
 			path = "nike-app2";
 			sourceTree = "<group>";
@@ -160,6 +166,8 @@
 				4BA971542B3EBA0800A39749 /* SceneDelegate.swift in Sources */,
 				4BA971562B3EBA0800A39749 /* ContentView.swift in Sources */,
 				4BA9716A2B3ECA5E00A39749 /* ProductCollectionViewCell.swift in Sources */,
+				4BE3BBD42B49E2BF001D503F /* ApiService.swift in Sources */,
+				4BE3BBD62B49F2C9001D503F /* ImageLoader.swift in Sources */,
 				4BA971662B3EC3D000A39749 /* ProductCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,15 +22,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("not implemented")
     }
-      
-    func embded(in parent:UIViewController, withContent content: ProductContent){
+    
+    func embded(in parent:UIViewController, imageUrl: String){
         
         if let host = self.host {
-            host.rootView = ProductCard(content: content)
+            host.rootView = ProductCard(imageUrl: imageUrl)
             host.view.layoutIfNeeded()
         } else{
-            let host = UIHostingController(rootView: ProductCard(content: content))
-             
+            let host = UIHostingController(rootView: ProductCard(imageUrl: imageUrl))
+            
             parent.addChild(host)
             host.didMove(toParent:parent)
             

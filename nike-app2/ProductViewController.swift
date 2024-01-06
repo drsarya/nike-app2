@@ -11,13 +11,22 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ProductViewController: UIViewController {
-    var productName: String = ""
-    var selectedProduct: Item?
-    var items: [Item] = []
-    struct Item {
-        var mainImageName: ProductContent
-        var nestedImagesNames: [ProductContent]
+    
+    var productId: Int?
+    private var productName: String?
+    private var selectedProduct: ProductInfo?
+    private var items: [ProductInfo] = []
+    private var apiService = ApiService()
+    
+    struct Product : Decodable {
+        var id: Int
         var title: String
+        var productInfos: [ProductInfo]
+    }
+    
+    struct ProductInfo : Decodable {
+        let mainImageName: String
+        let nestedImagesNames: [String]
     }
     
     lazy var allProductImagesCollectionView: UICollectionView = {
@@ -39,10 +48,10 @@ class ProductViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         let tap = UITapGestureRecognizer( target: self, action: #selector(didSelectProductType(_:) ))
         collectionView.addGestureRecognizer(tap)
-    
+        
         collectionView.backgroundColor = .white
         return collectionView
     }()
@@ -53,23 +62,38 @@ class ProductViewController: UIViewController {
             self.selectedProduct = items[indexPath.row]
             allProductImagesCollectionView.reloadData()
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         allProductImagesCollectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reuseIdentifier)
         productTypesCollectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reuseIdentifier)
+        
+        if(productId != nil){
+            apiService.getProductById(id: productId!, completition: {(result) in
+                switch result {
+                case .success(let product):
+                    self.productName = product.title
+                    self.navigationItem.title = self.productName
+                    self.items = product.productInfos
+                    if(product.productInfos.count > 0){
+                        self.selectedProduct = product.productInfos[0]
+                    }
+                    self.allProductImagesCollectionView.reloadData()
+                    self.productTypesCollectionView.reloadData()
+                case .failure(let error):
+                    print("Error processing json data: \(error)")
+                }
+            })
+        }
+        
         setupView()
     }
     
     private func setupView(){
-        if(items.count > 0){
-            self.selectedProduct = items[0]
-        }
         view.backgroundColor = .white
-        navigationItem.title = self.productName
-
+        
         view.addSubview(allProductImagesCollectionView)
         view.addSubview(productTypesCollectionView)
         
@@ -91,9 +115,11 @@ extension ProductViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == self.allProductImagesCollectionView){
+            if(self.selectedProduct == nil){
+                return 0
+            }
             return self.selectedProduct!.nestedImagesNames.count
         }
-        
         return items.count
     }
     
@@ -104,13 +130,16 @@ extension ProductViewController: UICollectionViewDataSource{
         }
         
         if(collectionView == self.allProductImagesCollectionView){
+            if(self.selectedProduct == nil){
+                return cell
+            }
             let item = self.selectedProduct!.nestedImagesNames[indexPath.row]
-            cell.embded(in: self, withContent: item)
+            cell.embded(in: self, imageUrl: item)
             return cell
         }
         
         let item = items[indexPath.row]
-        cell.embded(in: self, withContent: item.mainImageName)
+        cell.embded(in: self, imageUrl: item.mainImageName)
         return cell
     }
 }
